@@ -6,25 +6,20 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace BookingService.Data.Model
 {
     [SoftDelete("IsDeleted")]
-    public class Booking: ILoggable
+    public class Resource: ILoggable
     {
         public int Id { get; set; }
         
 		[ForeignKey("Tenant")]
         public int? TenantId { get; set; }
-
-        [ForeignKey("Resource")]
-        public int? ResourceId { get; set; }
-
-        [Index("NameIndex", IsUnique = false)]
+        
+		[Index("NameIndex", IsUnique = false)]
         [Column(TypeName = "VARCHAR")]        
 		public string Name { get; set; }
 
-        public DateTime Start { get; set; }
-
-        public DateTime End { get; set; }
-
-        public DateTime CreatedOn { get; set; }
+        public ICollection<Booking> Bookings { get; set; } = new HashSet<Booking>();
+        
+		public DateTime CreatedOn { get; set; }
         
 		public DateTime LastModifiedOn { get; set; }
         
@@ -35,7 +30,5 @@ namespace BookingService.Data.Model
 		public bool IsDeleted { get; set; }
 
         public virtual Tenant Tenant { get; set; }
-
-        public virtual Resource Resource { get; set; }
     }
 }

@@ -6,8 +6,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>
-    </ProductVersion>
+    <ProductVersion></ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FC25A15A-6CCB-44BA-99E1-C8C6DCFBFE40}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
@@ -22,8 +21,7 @@
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
     <UseGlobalApplicationHostFile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <NuGetPackageImportStamp></NuGetPackageImportStamp>
     <TypeScriptToolsVersion>2.2</TypeScriptToolsVersion>
     <TypeScriptEmitDecoratorMetadata>true</TypeScriptEmitDecoratorMetadata>
     <TypeScriptModuleKind>commonjs</TypeScriptModuleKind>
@@ -316,6 +314,22 @@
     <Content Include="src\styles\base\entity-list.scss" />
     <Content Include="src\styles\base\select.scss" />
     <Content Include="src\styles\base\view-card.scss" />
+    <Content Include="src\app\bookings\booking-edit-embed.component.scss" />
+    <Content Include="src\app\bookings\booking-edit-embed.component.html" />
+    <Content Include="src\app\bookings\booking-list-embed.component.scss" />
+    <Content Include="src\app\bookings\booking-list-embed.component.html" />
+    <Content Include="src\app\bookings\booking-item-embed.component.scss" />
+    <Content Include="src\app\bookings\booking-item-embed.component.html" />
+    <Content Include="src\app\bookings\booking-master-detail.component.scss" />
+    <Content Include="src\app\bookings\booking-master-detail.component.html" />
+    <Content Include="src\app\resources\resource-edit-embed.component.scss" />
+    <Content Include="src\app\resources\resource-edit-embed.component.html" />
+    <Content Include="src\app\resources\resource-list-embed.component.scss" />
+    <Content Include="src\app\resources\resource-list-embed.component.html" />
+    <Content Include="src\app\resources\resource-item-embed.component.scss" />
+    <Content Include="src\app\resources\resource-item-embed.component.html" />
+    <Content Include="src\app\resources\resource-master-detail.component.scss" />
+    <Content Include="src\app\resources\resource-master-detail.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -341,8 +355,7 @@
           <IISUrl>http://localhost:64410/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <CustomServerUrl></CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
@@ -453,9 +466,26 @@
     <TypeScriptCompile Include="src\app\models\event-location.model.ts" />
     <TypeScriptCompile Include="src\app\components\near-by-event.component.ts" />
     <TypeScriptCompile Include="src\app\components\near-by-events.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.actions.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.service.ts" />
+    <TypeScriptCompile Include="src\app\bookings\index.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.model.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.actions.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.service.ts" />
+    <TypeScriptCompile Include="src\app\resources\index.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="src\app\resources\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BookingService\BookingService.csproj">

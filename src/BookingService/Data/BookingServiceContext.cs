@@ -16,6 +16,8 @@ namespace BookingService.Data
         DbSet<DigitalAsset> DigitalAssets { get; set; }        
         DbSet<Account> Accounts { get; set; }
         DbSet<Profile> Profiles { get; set; }
+        DbSet<Booking> Bookings { get; set; }
+        DbSet<Resource> Resources { get; set; }
         Task<int> SaveChangesAsync();
     }
 
@@ -35,6 +37,8 @@ namespace BookingService.Data
         public DbSet<DigitalAsset> DigitalAssets { get; set; }        
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Profile> Profiles { get; set; }
+        public DbSet<Booking> Bookings { get; set; }
+        public DbSet<Resource> Resources { get; set; }
 
         public override int SaveChanges()
         {

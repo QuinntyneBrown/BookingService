@@ -304,8 +304,23 @@
     <Compile Include="Features\Notifications\SendRegistrationConfirmationCommand.cs" />
     <Compile Include="Features\Accounts\RegisterAccountApiModel.cs" />
     <Compile Include="Data\Model\Booking.cs" />
+    <Compile Include="Data\Model\Resource.cs" />
+    <Compile Include="Features\Bookings\AddOrUpdateBookingCommand.cs" />
+    <Compile Include="Features\Bookings\GetBookingsQuery.cs" />
+    <Compile Include="Features\Bookings\GetBookingByIdQuery.cs" />
+    <Compile Include="Features\Bookings\RemoveBookingCommand.cs" />
+    <Compile Include="Features\Bookings\BookingApiModel.cs" />
+    <Compile Include="Features\Bookings\BookingController.cs" />
+    <Compile Include="Features\Resources\AddOrUpdateResourceCommand.cs" />
+    <Compile Include="Features\Resources\GetResourcesQuery.cs" />
+    <Compile Include="Features\Resources\GetResourceByIdQuery.cs" />
+    <Compile Include="Features\Resources\RemoveResourceCommand.cs" />
+    <Compile Include="Features\Resources\ResourceApiModel.cs" />
+    <Compile Include="Features\Resources\ResourceController.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Features\Bookings\" />
+    <Folder Include="Features\Resources\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
