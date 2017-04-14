@@ -1,0 +1,17 @@
+@import "../../styles/base/_all";
+
+ce-splash {
+    display:block;
+
+    .address {
+        width:100%;
+        line-height:4em;
+        padding:0px 10px; 
+        margin-bottom:15px;       
+    }
+
+    ce-button {
+        margin-bottom:30px;
+        padding:0px 15px;
+    }
+}
