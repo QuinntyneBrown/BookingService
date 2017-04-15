@@ -1,0 +1,20 @@
+@import "../../styles/base/_all";
+
+ce-booking-master-detail {
+    display:block;
+	@extend .view-card;
+
+    ce-booking-edit-embed,
+    ce-booking-list-embed {
+        float:left;
+        display:inline-block;
+        position:relative;
+        width:50%;
+    }
+}
+
+ce-booking-master-detail::after {
+    clear:both;
+    display:block;
+    content:" ";
+}

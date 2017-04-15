@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using BookingService.Data.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BookingService.Data.Model
@@ -23,6 +22,8 @@ namespace BookingService.Data.Model
         public DateTime Start { get; set; }
 
         public DateTime End { get; set; }
+
+        public string Description { get; set; }
 
         public DateTime CreatedOn { get; set; }
         

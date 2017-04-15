@@ -3,9 +3,7 @@ using BookingService.Data;
 using BookingService.Data.Model;
 using BookingService.Features.Core;
 using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Linq;
 using System.Data.Entity;
 
 namespace BookingService.Features.Bookings
@@ -40,6 +38,14 @@ namespace BookingService.Features.Bookings
                 }
 
                 entity.Name = request.Booking.Name;
+
+                entity.Start = request.Booking.Start;
+
+                entity.End = request.Booking.End;
+
+                entity.Description = request.Booking.Description;
+
+                entity.ResourceId = request.Booking.ResourceId;
                 
                 await _context.SaveChangesAsync();
 

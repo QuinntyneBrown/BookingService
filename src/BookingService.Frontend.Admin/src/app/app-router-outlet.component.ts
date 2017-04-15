@@ -8,10 +8,13 @@ export class AppRouterOutletComponent extends RouterOutlet {
 
     connectedCallback() {
         this.setRoutes([
-            { path: "/", name: "personality-master-detail", authRequired: true },
-            { path: "/tab/:tabIndex", name: "personality-master-detail", authRequired: true },
-            { path: "/personality/edit/:personalityId/tab/:tabIndex", name: "personality-master-detail", authRequired: true },
-            { path: "/personality/edit/:personalityId", name: "personality-master-detail", authRequired: true },
+            { path: "/", name: "booking-master-detail", authRequired: true },
+            { path: "/tab/:tabIndex", name: "booking-master-detail", authRequired: true },
+            { path: "/booking/edit/:bookingId/tab/:tabIndex", name: "booking-master-detail", authRequired: true },
+            { path: "/booking/edit/:bookingId", name: "booking-master-detail", authRequired: true },
+
+            { path: "/resources", name: "resource-master-detail", authRequired: true },
+
             { path: "/register", name: "account-register" },
             { path: "/login", name: "login" },
             { path: "/error", name: "error" },

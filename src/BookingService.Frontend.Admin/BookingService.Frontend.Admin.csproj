@@ -243,6 +243,30 @@
     <Content Include="src\app\app.component.scss">
       <DependentUpon>app.component.ts</DependentUpon>
     </Content>
+    <Content Include="src\app\bookings\booking-edit-embed.component.html">
+      <DependentUpon>booking-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-edit-embed.component.scss">
+      <DependentUpon>booking-edit-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-item-embed.component.html">
+      <DependentUpon>booking-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-item-embed.component.scss">
+      <DependentUpon>booking-item-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-list-embed.component.html">
+      <DependentUpon>booking-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-list-embed.component.scss">
+      <DependentUpon>booking-list-embed.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-master-detail.component.html">
+      <DependentUpon>booking-master-detail.component.ts</DependentUpon>
+    </Content>
+    <Content Include="src\app\bookings\booking-master-detail.component.scss">
+      <DependentUpon>booking-master-detail.component.ts</DependentUpon>
+    </Content>
     <Content Include="src\app\digital-assets\digital-asset-edit-embed.component.html">
       <DependentUpon>digital-asset-edit-embed.component.ts</DependentUpon>
     </Content>
@@ -388,6 +412,14 @@
     <Content Include="src\styles\base\entity-list.scss" />
     <Content Include="src\styles\base\select.scss" />
     <Content Include="src\styles\base\view-card.scss" />
+    <Content Include="src\app\resources\resource-edit-embed.component.scss" />
+    <Content Include="src\app\resources\resource-edit-embed.component.html" />
+    <Content Include="src\app\resources\resource-list-embed.component.scss" />
+    <Content Include="src\app\resources\resource-list-embed.component.html" />
+    <Content Include="src\app\resources\resource-item-embed.component.scss" />
+    <Content Include="src\app\resources\resource-item-embed.component.html" />
+    <Content Include="src\app\resources\resource-master-detail.component.scss" />
+    <Content Include="src\app\resources\resource-master-detail.component.html" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Web.config" />
@@ -548,6 +580,22 @@
     <TypeScriptCompile Include="src\app\profiles\index.ts" />
     <TypeScriptCompile Include="src\app\profiles\profile.model.ts" />
     <TypeScriptCompile Include="src\app\accounts\register-account.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.actions.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.service.ts" />
+    <TypeScriptCompile Include="src\app\bookings\index.ts" />
+    <TypeScriptCompile Include="src\app\bookings\booking.model.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-edit-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-list-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-item-embed.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource-master-detail.component.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.actions.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.service.ts" />
+    <TypeScriptCompile Include="src\app\resources\index.ts" />
+    <TypeScriptCompile Include="src\app\resources\resource.model.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
