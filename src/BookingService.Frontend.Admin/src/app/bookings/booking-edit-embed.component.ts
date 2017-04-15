@@ -68,7 +68,10 @@ export class BookingEditEmbedComponent extends HTMLElement {
     public onSave() {
         const booking = {
             id: this.booking != null ? this.booking.id : null,
-            name: this._nameInputElement.value
+            name: this._nameInputElement.value,
+            start: this._startInputElement.value,
+            end: this._endInputElement.value,
+            isCancelled: this._isCancelledInputElement.value
         } as Booking;
         
         this.dispatchEvent(new BookingAdd(booking));            
@@ -116,6 +119,14 @@ export class BookingEditEmbedComponent extends HTMLElement {
     private get _deleteButtonElement(): HTMLElement { return this.querySelector(".delete-button") as HTMLElement };
 
     private get _nameInputElement(): HTMLInputElement { return this.querySelector(".booking-name") as HTMLInputElement; }
+
+    private get _startInputElement(): HTMLInputElement { return this.querySelector(".booking-start") as HTMLInputElement; }
+
+    private get _endInputElement(): HTMLInputElement { return this.querySelector(".booking-end") as HTMLInputElement; }
+
+    private get _descriptionElement(): HTMLInputElement { return this.querySelector(".booking-description") as HTMLInputElement; }
+
+    private get _isCancelledInputElement(): HTMLInputElement { return this.querySelector(".booking-cancelled") as HTMLInputElement; }
 }
 
 customElements.define(`ce-booking-edit-embed`,BookingEditEmbedComponent);

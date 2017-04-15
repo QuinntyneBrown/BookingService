@@ -46,6 +46,8 @@ namespace BookingService.Features.Bookings
                 entity.Description = request.Booking.Description;
 
                 entity.ResourceId = request.Booking.ResourceId;
+
+                entity.IsCancelled = request.Booking.IsCancelled;
                 
                 await _context.SaveChangesAsync();
 

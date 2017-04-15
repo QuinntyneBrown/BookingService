@@ -16,6 +16,8 @@ namespace BookingService.Features.Bookings
 
         public DateTime End { get; set; }
 
+        public bool IsCancelled { get; set; }
+
         public int? ResourceId { get; set; }
 
         public string Description { get; set; }
@@ -40,6 +42,8 @@ namespace BookingService.Features.Bookings
             model.Description = booking.Description;
 
             model.ResourceId = booking.ResourceId;
+
+            model.IsCancelled = booking.IsCancelled;
 
             model.Resource = ResourceApiModel.FromResource(booking.Resource);
 

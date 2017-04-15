@@ -23,6 +23,8 @@ namespace BookingService.Data.Model
 
         public DateTime End { get; set; }
 
+        public bool IsCancelled { get; set; }
+
         public string Description { get; set; }
 
         public DateTime CreatedOn { get; set; }
