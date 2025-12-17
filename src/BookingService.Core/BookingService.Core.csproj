@@ -79,11 +79,8 @@
     <Compile Include="Logger.cs" />
     <Compile Include="LoggerFactory.cs" />
     <Compile Include="MemoryCache.cs" />
-    <Compile Include="RateLimit.cs" />
     <Compile Include="StatusMiddleware.cs" />
     <Compile Include="StringExtensions.cs" />
-    <Compile Include="TenantMiddleware.cs" />
-    <Compile Include="WebApiUnityActionFilterProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

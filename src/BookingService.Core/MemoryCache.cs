@@ -5,7 +5,7 @@ namespace BookingService.Core
 {
     public class MemoryCache : Cache
     {
-        private static volatile BookingService.Features.Core.MemoryCache _current = null;
+        private static volatile BookingService.Core.MemoryCache _current = null;
         private static System.Runtime.Caching.MemoryCache _cache = System.Runtime.Caching.MemoryCache.Default;
         private static object _sync = new object();
 

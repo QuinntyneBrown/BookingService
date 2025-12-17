@@ -1,4 +1,5 @@
 ﻿using BookingService.Core;
+using BookingService.Features.Core;
 using BookingService.Security;
 using MediatR;
 using Microsoft.AspNet.SignalR.Infrastructure;

@@ -225,6 +225,9 @@
     <Compile Include="Data\Helpers\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Data\Model\ILoggable.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Features\Core\RateLimit.cs" />
+    <Compile Include="Features\Core\TenantMiddleware.cs" />
+    <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3Configuration.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3UploadDigitalAssetCommand.cs" />

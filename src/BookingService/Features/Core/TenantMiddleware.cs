@@ -3,7 +3,7 @@ using BookingService.Data;
 using System.Threading.Tasks;
 using System.Web.Http;
 
-namespace BookingService.Core
+namespace BookingService.Features.Core
 {
     public class TenantMiddleware : OwinMiddleware
     {
