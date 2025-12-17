@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public interface ILoggerFactory
     {

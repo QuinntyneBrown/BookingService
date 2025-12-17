@@ -1,7 +1,7 @@
 ﻿using System.Text.RegularExpressions;
 
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public static class StringExtensions
     {

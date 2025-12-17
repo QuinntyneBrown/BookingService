@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class LoggerFactory: ILoggerFactory
     {

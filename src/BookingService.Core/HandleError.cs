@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Web.Http.Filters;
 using static System.Net.HttpStatusCode;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class HandleErrorAttribute : ExceptionFilterAttribute
     {

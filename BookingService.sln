@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingService.Frontend", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingService.Frontend.Admin", "src\BookingService.Frontend.Admin\BookingService.Frontend.Admin.csproj", "{F6286226-21E2-4BEB-B76D-F9E2D650E02A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookingService.Core", "src\BookingService.Core\BookingService.Core.csproj", "{B8721AC4-F454-4F55-C156-450053670806}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6286226-21E2-4BEB-B76D-F9E2D650E02A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8721AC4-F454-4F55-C156-450053670806}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8721AC4-F454-4F55-C156-450053670806}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8721AC4-F454-4F55-C156-450053670806}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8721AC4-F454-4F55-C156-450053670806}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,5 +43,6 @@ Global
 		{A8711BC3-F343-4E44-B045-349942559795} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
 		{FC25A15A-6CCB-44BA-99E1-C8C6DCFBFE40} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
 		{F6286226-21E2-4BEB-B76D-F9E2D650E02A} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
+		{B8721AC4-F454-4F55-C156-450053670806} = {5304B8C5-0198-4BC6-B0F3-89713792CDE9}
 	EndGlobalSection
 EndGlobal

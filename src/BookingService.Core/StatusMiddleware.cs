@@ -1,7 +1,7 @@
 ﻿using Microsoft.Owin;
 using System.Threading.Tasks;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class StatusMiddleware : OwinMiddleware
     {

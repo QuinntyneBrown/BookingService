@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net.Http;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public static class HttpRequestMessageExtensions
     {

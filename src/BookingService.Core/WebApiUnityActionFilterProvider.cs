@@ -5,7 +5,7 @@ using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 
-namespace BookingService.Features.Core { 
+namespace BookingService.Core { 
 
     public class WebApiUnityActionFilterProvider : ActionDescriptorFilterProvider, IFilterProvider
     {

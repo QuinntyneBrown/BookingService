@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public abstract class Cache: ICache
     {

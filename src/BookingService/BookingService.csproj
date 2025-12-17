@@ -225,24 +225,6 @@
     <Compile Include="Data\Helpers\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Data\Model\ILoggable.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
-    <Compile Include="Features\Core\Cache.cs" />
-    <Compile Include="Features\Core\CacheProvider.cs" />
-    <Compile Include="Features\Core\DateExtensions.cs" />
-    <Compile Include="Features\Core\HandleError.cs" />
-    <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
-    <Compile Include="Features\Core\ICache.cs" />
-    <Compile Include="Features\Core\ICacheProvider.cs" />
-    <Compile Include="Features\Core\ILogger.cs" />
-    <Compile Include="Features\Core\ILoggerFactory.cs" />
-    <Compile Include="Features\Core\ILoggerProvider.cs" />
-    <Compile Include="Features\Core\Logger.cs" />
-    <Compile Include="Features\Core\LoggerFactory.cs" />
-    <Compile Include="Features\Core\MemoryCache.cs" />
-    <Compile Include="Features\Core\RateLimit.cs" />
-    <Compile Include="Features\Core\StatusMiddleware.cs" />
-    <Compile Include="Features\Core\StringExtensions.cs" />
-    <Compile Include="Features\Core\TenantMiddleware.cs" />
-    <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
     <Compile Include="Features\DigitalAssets\AddOrUpdateDigitalAssetCommand.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3Configuration.cs" />
     <Compile Include="Features\DigitalAssets\AmazonS3UploadDigitalAssetCommand.cs" />
@@ -329,6 +311,12 @@
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\..\packages\AWSSDK.S3.3.3.5.10\analyzers\dotnet\cs\AWSSDK.S3.CodeAnalysis.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BookingService.Core\BookingService.Core.csproj">
+      <Project>{B8721AC4-F454-4F55-C156-450053670806}</Project>
+      <Name>BookingService.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

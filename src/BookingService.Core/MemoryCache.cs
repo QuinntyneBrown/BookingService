@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Caching;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class MemoryCache : Cache
     {

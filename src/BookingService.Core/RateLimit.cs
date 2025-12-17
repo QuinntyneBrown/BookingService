@@ -8,7 +8,7 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using static System.Net.HttpStatusCode;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class RateLimitAttribute : ActionFilterAttribute
     {

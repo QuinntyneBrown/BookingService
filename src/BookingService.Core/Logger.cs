@@ -1,7 +1,7 @@
 
 using System;
 
-namespace BookingService.Features.Core
+namespace BookingService.Core
 {
     public class Logger: ILogger
     {

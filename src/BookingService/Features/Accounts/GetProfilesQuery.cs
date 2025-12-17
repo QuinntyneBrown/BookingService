@@ -1,5 +1,5 @@
 using BookingService.Data;
-using BookingService.Features.Core;
+using BookingService.Core;
 using MediatR;
 using System;
 using System.Collections.Generic;
