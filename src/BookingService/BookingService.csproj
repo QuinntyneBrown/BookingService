@@ -225,6 +225,7 @@
     <Compile Include="Data\Helpers\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Data\Model\ILoggable.cs" />
     <Compile Include="Data\Migrations\Configuration.cs" />
+    <Compile Include="Features\Core\HttpRequestMessageExtensions.cs" />
     <Compile Include="Features\Core\RateLimit.cs" />
     <Compile Include="Features\Core\TenantMiddleware.cs" />
     <Compile Include="Features\Core\WebApiUnityActionFilterProvider.cs" />
