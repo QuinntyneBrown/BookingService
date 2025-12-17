@@ -1,7 +1,8 @@
+using System.Threading;
 using BookingService.Security;
 using System;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using BookingService.Data.Model;
 using System.Collections.Generic;
 using System.Security.Claims;
@@ -24,7 +25,7 @@ namespace BookingService.Security
             public bool IsAuthenticated { get; set; }
         }
 
-        public class AuthenticateHandler : IAsyncRequestHandler<AuthenticateRequest, AuthenticateResponse>
+        public class AuthenticateHandler : IRequestHandler<AuthenticateRequest, AuthenticateResponse>
         {
             public AuthenticateHandler(IBookingServiceContext context, IEncryptionService encryptionService)
             {

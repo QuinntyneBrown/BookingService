@@ -4,14 +4,13 @@ using MediatR;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
-using Microsoft.Practices.Unity;
+using Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;
 using Swashbuckle.Application;
 using System;
 using System.Reflection;
-using System.Web.Http;
 
 using static BookingService.UnityConfiguration;
 

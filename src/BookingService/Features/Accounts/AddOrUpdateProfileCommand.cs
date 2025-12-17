@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
@@ -6,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Accounts
 {
@@ -20,7 +21,7 @@ namespace BookingService.Features.Accounts
 
         public class AddOrUpdateProfileResponse { }
 
-        public class AddOrUpdateProfileHandler : IAsyncRequestHandler<AddOrUpdateProfileRequest, AddOrUpdateProfileResponse>
+        public class AddOrUpdateProfileHandler : IRequestHandler<AddOrUpdateProfileRequest, AddOrUpdateProfileResponse>
         {
             public AddOrUpdateProfileHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Accounts
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateProfileResponse> Handle(AddOrUpdateProfileRequest request)
+            public async Task<AddOrUpdateProfileResponse> Handle(AddOrUpdateProfileRequest request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Profiles
                     .Include(x => x.Tenant)

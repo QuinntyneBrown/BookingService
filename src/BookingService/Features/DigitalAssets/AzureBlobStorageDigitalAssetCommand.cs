@@ -1,7 +1,6 @@
+using System.Threading;
 using MediatR;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
-using Microsoft.WindowsAzure.Storage.Auth;
+using Azure.Storage.Blobs;
 using BookingService.Data;
 using BookingService.Features.Core;
 using BookingService.Features.DigitalAssets.UploadHandlers;
@@ -25,7 +24,7 @@ namespace BookingService.Features.DigitalAssets
             public ICollection<DigitalAssetApiModel> DigitalAssets { get; set; } = new HashSet<DigitalAssetApiModel>();
         }
 
-        public class AzureBlobStorageDigitalAssetHandler : IAsyncRequestHandler<AzureBlobStorageDigitalAssetRequest, AzureBlobStorageDigitalAssetResponse>
+        public class AzureBlobStorageDigitalAssetHandler : IRequestHandler<AzureBlobStorageDigitalAssetRequest, AzureBlobStorageDigitalAssetResponse>
         {
             public AzureBlobStorageDigitalAssetHandler(BookingServiceContext context, ICache cache, Lazy<IAzureBlobStorageConfiguration> lazyConfiguration)
             {
@@ -35,7 +34,7 @@ namespace BookingService.Features.DigitalAssets
                 _storageAccount = new CloudStorageAccount(new StorageCredentials(_configuration.AccountName,_configuration.KeyValue),true);
             }
 
-            public async Task<AzureBlobStorageDigitalAssetResponse> Handle(AzureBlobStorageDigitalAssetRequest request)
+            public async Task<AzureBlobStorageDigitalAssetResponse> Handle(AzureBlobStorageDigitalAssetRequest request, CancellationToken cancellationToken)
             {
                 _blobClient = _storageAccount.CreateCloudBlobClient();
 

@@ -1,6 +1,6 @@
 using BookingService.Security;
 using MediatR;
-using Microsoft.Practices.Unity;
+using Unity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

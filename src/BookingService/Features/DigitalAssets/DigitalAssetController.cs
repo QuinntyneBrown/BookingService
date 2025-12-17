@@ -4,8 +4,8 @@ using MediatR;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using System.Net.Http.Headers;
 
 using static BookingService.Features.DigitalAssets.GetDigitalAssetByUniqueIdQuery;
@@ -15,7 +15,7 @@ namespace BookingService.Features.DigitalAssets
 {
     [Authorize]
     [RoutePrefix("api/digitalasset")]
-    public class DigitalAssetController : ApiController
+    public class DigitalAssetController : ControllerBase
     {        
         public DigitalAssetController(IMediator mediator, IUserManager userManager)
         {
@@ -25,40 +25,40 @@ namespace BookingService.Features.DigitalAssets
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
+        [ProducesResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse), 200)]
+        public async Task<IActionResult> Add(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
+        [ProducesResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse), 200)]
+        public async Task<IActionResult> Update(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetsQuery.GetDigitalAssetsResponse))]
-        public async Task<IHttpActionResult> Get()
+        [ProducesResponseType(typeof(GetDigitalAssetsQuery.GetDigitalAssetsResponse), 200)]
+        public async Task<IActionResult> Get()
             => Ok(await _mediator.Send(new GetDigitalAssetsQuery.GetDigitalAssetsRequest()));
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByIdQuery.GetDigitalAssetByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetDigitalAssetByIdQuery.GetDigitalAssetByIdRequest request)
+        [ProducesResponseType(typeof(GetDigitalAssetByIdQuery.GetDigitalAssetByIdResponse), 200)]
+        public async Task<IActionResult> GetById([FromQuery]GetDigitalAssetByIdQuery.GetDigitalAssetByIdRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveDigitalAssetCommand.RemoveDigitalAssetResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveDigitalAssetCommand.RemoveDigitalAssetRequest request)
+        [ProducesResponseType(typeof(RemoveDigitalAssetCommand.RemoveDigitalAssetResponse), 200)]
+        public async Task<IActionResult> Remove([FromQuery]RemoveDigitalAssetCommand.RemoveDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("serve")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByUniqueIdResponse))]
+        [ProducesResponseType(typeof(GetDigitalAssetByUniqueIdResponse), 200)]
         [AllowAnonymous]
-        public async Task<HttpResponseMessage> Serve([FromUri]GetDigitalAssetByUniqueIdRequest request)
+        public async Task<HttpResponseMessage> Serve([FromQuery]GetDigitalAssetByUniqueIdRequest request)
         {
             var response = await _mediator.Send(request);
             var result = new HttpResponseMessage(HttpStatusCode.OK);
@@ -69,7 +69,7 @@ namespace BookingService.Features.DigitalAssets
 
         [Route("upload")]
         [HttpPost]
-        public async Task<IHttpActionResult> Upload(HttpRequestMessage request)
+        public async Task<IActionResult> Upload(HttpRequestMessage request)
         {
             if (!Request.Content.IsMimeMultipartContent("form-data"))
                 throw new HttpResponseException(HttpStatusCode.BadRequest);

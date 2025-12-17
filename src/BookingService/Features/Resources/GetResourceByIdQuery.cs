@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -5,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Resources
 {
@@ -21,7 +22,7 @@ namespace BookingService.Features.Resources
             public ResourceApiModel Resource { get; set; } 
         }
 
-        public class GetResourceByIdHandler : IAsyncRequestHandler<GetResourceByIdRequest, GetResourceByIdResponse>
+        public class GetResourceByIdHandler : IRequestHandler<GetResourceByIdRequest, GetResourceByIdResponse>
         {
             public GetResourceByIdHandler(BookingServiceContext context, ICache cache)
             {
@@ -29,7 +30,7 @@ namespace BookingService.Features.Resources
                 _cache = cache;
             }
 
-            public async Task<GetResourceByIdResponse> Handle(GetResourceByIdRequest request)
+            public async Task<GetResourceByIdResponse> Handle(GetResourceByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetResourceByIdResponse()
                 {

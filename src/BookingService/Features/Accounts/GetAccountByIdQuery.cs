@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -5,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Accounts
 {
@@ -21,7 +22,7 @@ namespace BookingService.Features.Accounts
             public AccountApiModel Account { get; set; } 
         }
 
-        public class GetAccountByIdHandler : IAsyncRequestHandler<GetAccountByIdRequest, GetAccountByIdResponse>
+        public class GetAccountByIdHandler : IRequestHandler<GetAccountByIdRequest, GetAccountByIdResponse>
         {
             public GetAccountByIdHandler(BookingServiceContext context, ICache cache)
             {
@@ -29,7 +30,7 @@ namespace BookingService.Features.Accounts
                 _cache = cache;
             }
 
-            public async Task<GetAccountByIdResponse> Handle(GetAccountByIdRequest request)
+            public async Task<GetAccountByIdResponse> Handle(GetAccountByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetAccountByIdResponse()
                 {

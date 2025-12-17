@@ -2,7 +2,7 @@
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Core.Metadata.Edm;
-using System.Data.Entity.Infrastructure.Interception;
+using Microsoft.EntityFrameworkCore.Infrastructure.Interception;
 using System.Linq;
 
 namespace BookingService.Data.Helpers

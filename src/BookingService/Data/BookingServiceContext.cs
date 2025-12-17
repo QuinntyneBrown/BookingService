@@ -1,8 +1,7 @@
 ﻿using BookingService.Data.Helpers;
 using BookingService.Data.Model;
 using System;
-using System.Data.Entity;
-using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -23,12 +22,9 @@ namespace BookingService.Data
 
     public class BookingServiceContext: DbContext, IBookingServiceContext
     {
-        public BookingServiceContext()
-            :base("BookingServiceContext")
+        public BookingServiceContext(DbContextOptions<BookingServiceContext> options)
+            : base(options)
         {
-            Configuration.ProxyCreationEnabled = false;
-            Configuration.LazyLoadingEnabled = false;
-            Configuration.AutoDetectChangesEnabled = true;
         }
 
         public DbSet<User> Users { get; set; }
@@ -63,25 +59,15 @@ namespace BookingService.Data
             }
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<User>().
-                HasMany(u => u.Roles).
-                WithMany(r => r.Users).
-                Map(
-                    m =>
-                    {
-                        m.MapLeftKey("User_Id");
-                        m.MapRightKey("Role_Id");
-                        m.ToTable("UserRoles");
-                    });
+            modelBuilder.Entity<User>()
+                .HasMany(u => u.Roles)
+                .WithMany(r => r.Users)
+                .UsingEntity(j => j.ToTable("UserRoles"));
 
-
-            var convention = new AttributeToTableAnnotationConvention<SoftDeleteAttribute, string>(
-                "SoftDeleteColumnName",
-                (type, attributes) => attributes.Single().ColumnName);
-
-            modelBuilder.Conventions.Add(convention);
+            // Note: Soft delete convention needs to be reimplemented as a global query filter
+            // Example: modelBuilder.Entity<YourEntity>().HasQueryFilter(e => !e.IsDeleted);
         }
     }
 }

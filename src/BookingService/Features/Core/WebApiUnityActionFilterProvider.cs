@@ -1,7 +1,6 @@
-using Microsoft.Practices.Unity;
+using Unity;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web.Http;
 using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 

@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -5,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Accounts
 {
@@ -21,7 +22,7 @@ namespace BookingService.Features.Accounts
             public ProfileApiModel Profile { get; set; } 
         }
 
-        public class GetProfileByIdHandler : IAsyncRequestHandler<GetProfileByIdRequest, GetProfileByIdResponse>
+        public class GetProfileByIdHandler : IRequestHandler<GetProfileByIdRequest, GetProfileByIdResponse>
         {
             public GetProfileByIdHandler(BookingServiceContext context, ICache cache)
             {
@@ -29,7 +30,7 @@ namespace BookingService.Features.Accounts
                 _cache = cache;
             }
 
-            public async Task<GetProfileByIdResponse> Handle(GetProfileByIdRequest request)
+            public async Task<GetProfileByIdResponse> Handle(GetProfileByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetProfileByIdResponse()
                 {

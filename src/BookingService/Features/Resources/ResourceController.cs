@@ -2,8 +2,8 @@ using MediatR;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using BookingService.Features.Core;
 using static BookingService.Features.Resources.AddOrUpdateResourceCommand;
 using static BookingService.Features.Resources.GetResourcesQuery;
@@ -13,8 +13,8 @@ using static BookingService.Features.Resources.RemoveResourceCommand;
 namespace BookingService.Features.Resources
 {
     [Authorize]
-    [RoutePrefix("api/resource")]
-    public class ResourceController : ApiController
+    [Route("api/resource")]
+    public class ResourceController : ControllerBase
     {
         public ResourceController(IMediator mediator)
         {
@@ -23,8 +23,8 @@ namespace BookingService.Features.Resources
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateResourceResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateResourceRequest request)
+        [ProducesResponseType(typeof(AddOrUpdateResourceResponse), 200)]
+        public async Task<IActionResult> Add(AddOrUpdateResourceRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -32,8 +32,8 @@ namespace BookingService.Features.Resources
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateResourceResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateResourceRequest request)
+        [ProducesResponseType(typeof(AddOrUpdateResourceResponse), 200)]
+        public async Task<IActionResult> Update(AddOrUpdateResourceRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -42,8 +42,8 @@ namespace BookingService.Features.Resources
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetResourcesResponse))]
-        public async Task<IHttpActionResult> Get()
+        [ProducesResponseType(typeof(GetResourcesResponse), 200)]
+        public async Task<IActionResult> Get()
         {
             var request = new GetResourcesRequest();
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -52,8 +52,8 @@ namespace BookingService.Features.Resources
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetResourceByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetResourceByIdRequest request)
+        [ProducesResponseType(typeof(GetResourceByIdResponse), 200)]
+        public async Task<IActionResult> GetById([FromQuery]GetResourceByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -61,8 +61,8 @@ namespace BookingService.Features.Resources
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveResourceResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveResourceRequest request)
+        [ProducesResponseType(typeof(RemoveResourceResponse), 200)]
+        public async Task<IActionResult> Remove([FromQuery]RemoveResourceRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

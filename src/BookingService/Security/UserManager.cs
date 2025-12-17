@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using System.Security.Principal;
 using BookingService.Data;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Security
 {

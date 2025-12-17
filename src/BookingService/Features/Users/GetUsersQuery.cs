@@ -1,10 +1,11 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Users
 {
@@ -19,7 +20,7 @@ namespace BookingService.Features.Users
             public ICollection<UserApiModel> Users { get; set; } = new HashSet<UserApiModel>();
         }
 
-        public class GetUsersHandler : IAsyncRequestHandler<GetUsersRequest, GetUsersResponse>
+        public class GetUsersHandler : IRequestHandler<GetUsersRequest, GetUsersResponse>
         {
             public GetUsersHandler(BookingServiceContext context, ICache cache)
             {
@@ -27,7 +28,7 @@ namespace BookingService.Features.Users
                 _cache = cache;
             }
 
-            public async Task<GetUsersResponse> Handle(GetUsersRequest request)
+            public async Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
             {
                 var users = await _context.Users
 				    .Where( x => x.TenantId == request.TenantId )

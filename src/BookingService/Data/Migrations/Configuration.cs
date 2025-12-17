@@ -2,7 +2,7 @@ namespace BookingService.Migrations
 {
     using Data;
     using Data.Helpers;
-    using System.Data.Entity.Migrations;
+    using Microsoft.EntityFrameworkCore.Migrations;
 
     internal sealed class Configuration : DbMigrationsConfiguration<BookingServiceContext>
     {

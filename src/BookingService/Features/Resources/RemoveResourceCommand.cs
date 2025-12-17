@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
@@ -6,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Resources
 {
@@ -20,7 +21,7 @@ namespace BookingService.Features.Resources
 
         public class RemoveResourceResponse { }
 
-        public class RemoveResourceHandler : IAsyncRequestHandler<RemoveResourceRequest, RemoveResourceResponse>
+        public class RemoveResourceHandler : IRequestHandler<RemoveResourceRequest, RemoveResourceResponse>
         {
             public RemoveResourceHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Resources
                 _cache = cache;
             }
 
-            public async Task<RemoveResourceResponse> Handle(RemoveResourceRequest request)
+            public async Task<RemoveResourceResponse> Handle(RemoveResourceRequest request, CancellationToken cancellationToken)
             {
                 var resource = await _context.Resources.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 resource.IsDeleted = true;

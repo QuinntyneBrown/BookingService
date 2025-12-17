@@ -1,8 +1,8 @@
 using BookingService.Security;
 using MediatR;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using static BookingService.Features.Users.AddOrUpdateUserCommand;
 using static BookingService.Features.Users.GetUsersQuery;
 using static BookingService.Features.Users.GetUserByIdQuery;
@@ -12,8 +12,9 @@ using static BookingService.Features.Users.GetUserByUsernameQuery;
 namespace BookingService.Features.Users
 {
     [Authorize]
-    [RoutePrefix("api/user")]
-    public class UserController : ApiController
+    [Route("api/user")]
+    [ApiController]
+    public class UserController : ControllerBase
     {
         public UserController(IMediator mediator, IUserManager userManager)
         {
@@ -21,57 +22,51 @@ namespace BookingService.Features.Users
             _userManager = userManager;
         }
 
-        [Route("add")]
-        [HttpPost]
-        [ResponseType(typeof(AddOrUpdateUserResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateUserRequest request)
+        [HttpPost("add")]
+        [ProducesResponseType(typeof(AddOrUpdateUserResponse), 200)]
+        public async Task<IActionResult> Add(AddOrUpdateUserRequest request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
 
-        [Route("update")]
-        [HttpPut]
-        [ResponseType(typeof(AddOrUpdateUserResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateUserRequest request)
+        [HttpPut("update")]
+        [ProducesResponseType(typeof(AddOrUpdateUserResponse), 200)]
+        public async Task<IActionResult> Update(AddOrUpdateUserRequest request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
         
-        [Route("get")]
+        [HttpGet("get")]
         [AllowAnonymous]
-        [HttpGet]
-        [ResponseType(typeof(GetUsersResponse))]
-        public async Task<IHttpActionResult> Get([FromUri]GetUsersQuery.GetUsersRequest request)
+        [ProducesResponseType(typeof(GetUsersResponse), 200)]
+        public async Task<IActionResult> Get([FromQuery]GetUsersQuery.GetUsersRequest request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
 
-        [Route("getById")]
-        [HttpGet]
-        [ResponseType(typeof(GetUserByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetUserByIdRequest request)
+        [HttpGet("getById")]
+        [ProducesResponseType(typeof(GetUserByIdResponse), 200)]
+        public async Task<IActionResult> GetById([FromQuery]GetUserByIdRequest request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
 
-        [Route("remove")]
-        [HttpDelete]
-        [ResponseType(typeof(RemoveUserResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveUserRequest request)
+        [HttpDelete("remove")]
+        [ProducesResponseType(typeof(RemoveUserResponse), 200)]
+        public async Task<IActionResult> Remove([FromQuery]RemoveUserRequest request)
         {
             request.TenantId = (await _userManager.GetUserAsync(User)).TenantId;
             return Ok(await _mediator.Send(request));
         }
 
-        [Route("current")]
-        [HttpGet]
+        [HttpGet("current")]
         [AllowAnonymous]
-        [ResponseType(typeof(GetUserByUsernameResponse))]
-        public async Task<IHttpActionResult> Current()
+        [ProducesResponseType(typeof(GetUserByUsernameResponse), 200)]
+        public async Task<IActionResult> Current()
         {            
             if (!User.Identity.IsAuthenticated)
                 return Ok();

@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace BookingService.Features.DigitalAssets
             public DigitalAssetApiModel DigitalAsset { get; set; } 
 		}
 
-        public class GetDigitalAssetByIdHandler : IAsyncRequestHandler<GetDigitalAssetByIdRequest, GetDigitalAssetByIdResponse>
+        public class GetDigitalAssetByIdHandler : IRequestHandler<GetDigitalAssetByIdRequest, GetDigitalAssetByIdResponse>
         {
             public GetDigitalAssetByIdHandler(IBookingServiceContext context, ICache cache)
             {
@@ -24,7 +25,7 @@ namespace BookingService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<GetDigitalAssetByIdResponse> Handle(GetDigitalAssetByIdRequest request)
+            public async Task<GetDigitalAssetByIdResponse> Handle(GetDigitalAssetByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetDigitalAssetByIdResponse()
                 {

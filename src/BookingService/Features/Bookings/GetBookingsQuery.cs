@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -5,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Bookings
 {
@@ -20,7 +21,7 @@ namespace BookingService.Features.Bookings
             public ICollection<BookingApiModel> Bookings { get; set; } = new HashSet<BookingApiModel>();
         }
 
-        public class GetBookingsHandler : IAsyncRequestHandler<GetBookingsRequest, GetBookingsResponse>
+        public class GetBookingsHandler : IRequestHandler<GetBookingsRequest, GetBookingsResponse>
         {
             public GetBookingsHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Bookings
                 _cache = cache;
             }
 
-            public async Task<GetBookingsResponse> Handle(GetBookingsRequest request)
+            public async Task<GetBookingsResponse> Handle(GetBookingsRequest request, CancellationToken cancellationToken)
             {
                 var bookings = await _context.Bookings
                     .Include(x => x.Tenant)

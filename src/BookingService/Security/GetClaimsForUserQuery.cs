@@ -1,9 +1,10 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace BookingService.Security
@@ -20,7 +21,7 @@ namespace BookingService.Security
             public ICollection<Claim> Claims { get; set; }
         }
 
-        public class GetClaimsForUserHandler : IAsyncRequestHandler<GetClaimsForUserRequest, GetClaimsForUserResponse>
+        public class GetClaimsForUserHandler : IRequestHandler<GetClaimsForUserRequest, GetClaimsForUserResponse>
         {
             public GetClaimsForUserHandler(IBookingServiceContext context)
             {
