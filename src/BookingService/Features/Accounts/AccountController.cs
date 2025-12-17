@@ -23,7 +23,7 @@ namespace BookingService.Features.Accounts
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateAccountResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateAccountResponse), 200)]
         public async Task<IHttpActionResult> Add(AddOrUpdateAccountRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -32,7 +32,7 @@ namespace BookingService.Features.Accounts
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateAccountResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateAccountResponse), 200)]
         public async Task<IHttpActionResult> Update(AddOrUpdateAccountRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -42,7 +42,7 @@ namespace BookingService.Features.Accounts
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetAccountsResponse))]
+        [ProducesResponseType(typeof(GetAccountsResponse), 200)]
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetAccountsRequest();
@@ -52,7 +52,7 @@ namespace BookingService.Features.Accounts
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetAccountByIdResponse))]
+        [ProducesResponseType(typeof(GetAccountByIdResponse), 200)]
         public async Task<IHttpActionResult> GetById([FromQuery]GetAccountByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -61,7 +61,7 @@ namespace BookingService.Features.Accounts
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveAccountResponse))]
+        [ProducesResponseType(typeof(RemoveAccountResponse), 200)]
         public async Task<IHttpActionResult> Remove([FromQuery]RemoveAccountRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();

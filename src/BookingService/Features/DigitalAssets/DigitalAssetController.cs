@@ -25,38 +25,38 @@ namespace BookingService.Features.DigitalAssets
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse), 200)]
         public async Task<IActionResult> Add(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetResponse), 200)]
         public async Task<IActionResult> Update(AddOrUpdateDigitalAssetCommand.AddOrUpdateDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
         
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetsQuery.GetDigitalAssetsResponse))]
+        [ProducesResponseType(typeof(GetDigitalAssetsQuery.GetDigitalAssetsResponse), 200)]
         public async Task<IActionResult> Get()
             => Ok(await _mediator.Send(new GetDigitalAssetsQuery.GetDigitalAssetsRequest()));
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByIdQuery.GetDigitalAssetByIdResponse))]
+        [ProducesResponseType(typeof(GetDigitalAssetByIdQuery.GetDigitalAssetByIdResponse), 200)]
         public async Task<IActionResult> GetById([FromQuery]GetDigitalAssetByIdQuery.GetDigitalAssetByIdRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveDigitalAssetCommand.RemoveDigitalAssetResponse))]
+        [ProducesResponseType(typeof(RemoveDigitalAssetCommand.RemoveDigitalAssetResponse), 200)]
         public async Task<IActionResult> Remove([FromQuery]RemoveDigitalAssetCommand.RemoveDigitalAssetRequest request)
             => Ok(await _mediator.Send(request));
 
         [Route("serve")]
         [HttpGet]
-        [ResponseType(typeof(GetDigitalAssetByUniqueIdResponse))]
+        [ProducesResponseType(typeof(GetDigitalAssetByUniqueIdResponse), 200)]
         [AllowAnonymous]
         public async Task<HttpResponseMessage> Serve([FromQuery]GetDigitalAssetByUniqueIdRequest request)
         {

@@ -1,8 +1,6 @@
 using System.Threading;
 using MediatR;
 using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Blob;
-using Azure.Storage.Blobs.Auth;
 using BookingService.Data;
 using BookingService.Features.Core;
 using BookingService.Features.DigitalAssets.UploadHandlers;

@@ -11,7 +11,6 @@ using Owin;
 using Swashbuckle.Application;
 using System;
 using System.Reflection;
-using System.Web.Http;
 
 using static BookingService.UnityConfiguration;
 

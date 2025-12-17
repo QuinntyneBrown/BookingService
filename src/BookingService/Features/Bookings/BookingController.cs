@@ -23,7 +23,7 @@ namespace BookingService.Features.Bookings
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateBookingResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateBookingResponse), 200)]
         public async Task<IHttpActionResult> Add(AddOrUpdateBookingRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -32,7 +32,7 @@ namespace BookingService.Features.Bookings
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateBookingResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateBookingResponse), 200)]
         public async Task<IHttpActionResult> Update(AddOrUpdateBookingRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -42,7 +42,7 @@ namespace BookingService.Features.Bookings
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetBookingsResponse))]
+        [ProducesResponseType(typeof(GetBookingsResponse), 200)]
         public async Task<IHttpActionResult> Get()
         {
             var request = new GetBookingsRequest();
@@ -52,7 +52,7 @@ namespace BookingService.Features.Bookings
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetBookingByIdResponse))]
+        [ProducesResponseType(typeof(GetBookingByIdResponse), 200)]
         public async Task<IHttpActionResult> GetById([FromQuery]GetBookingByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -61,7 +61,7 @@ namespace BookingService.Features.Bookings
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveBookingResponse))]
+        [ProducesResponseType(typeof(RemoveBookingResponse), 200)]
         public async Task<IHttpActionResult> Remove([FromQuery]RemoveBookingRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();

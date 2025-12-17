@@ -2,7 +2,6 @@ using MediatR;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
 using Microsoft.AspNetCore.Authorization;
 using BookingService.Features.Core;
 using static BookingService.Features.Accounts.AddOrUpdateProfileCommand;
@@ -23,7 +22,7 @@ namespace BookingService.Features.Accounts
 
         [Route("add")]
         [HttpPost]
-        [ResponseType(typeof(AddOrUpdateProfileResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateProfileResponse), 200)]
         public async Task<IActionResult> Add(AddOrUpdateProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -32,7 +31,7 @@ namespace BookingService.Features.Accounts
 
         [Route("update")]
         [HttpPut]
-        [ResponseType(typeof(AddOrUpdateProfileResponse))]
+        [ProducesResponseType(typeof(AddOrUpdateProfileResponse), 200)]
         public async Task<IActionResult> Update(AddOrUpdateProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -42,7 +41,7 @@ namespace BookingService.Features.Accounts
         [Route("get")]
         [AllowAnonymous]
         [HttpGet]
-        [ResponseType(typeof(GetProfilesResponse))]
+        [ProducesResponseType(typeof(GetProfilesResponse), 200)]
         public async Task<IActionResult> Get()
         {
             var request = new GetProfilesRequest();
@@ -52,7 +51,7 @@ namespace BookingService.Features.Accounts
 
         [Route("getById")]
         [HttpGet]
-        [ResponseType(typeof(GetProfileByIdResponse))]
+        [ProducesResponseType(typeof(GetProfileByIdResponse), 200)]
         public async Task<IActionResult> GetById([FromQuery]GetProfileByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -61,7 +60,7 @@ namespace BookingService.Features.Accounts
 
         [Route("remove")]
         [HttpDelete]
-        [ResponseType(typeof(RemoveProfileResponse))]
+        [ProducesResponseType(typeof(RemoveProfileResponse), 200)]
         public async Task<IActionResult> Remove([FromQuery]RemoveProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
