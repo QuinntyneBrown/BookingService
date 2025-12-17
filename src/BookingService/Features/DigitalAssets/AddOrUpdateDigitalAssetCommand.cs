@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
@@ -16,7 +17,7 @@ namespace BookingService.Features.DigitalAssets
 
         public class AddOrUpdateDigitalAssetResponse { }
 
-        public class AddOrUpdateDigitalAssetHandler : IAsyncRequestHandler<AddOrUpdateDigitalAssetRequest, AddOrUpdateDigitalAssetResponse>
+        public class AddOrUpdateDigitalAssetHandler : IRequestHandler<AddOrUpdateDigitalAssetRequest, AddOrUpdateDigitalAssetResponse>
         {
             public AddOrUpdateDigitalAssetHandler(IBookingServiceContext context, ICache cache)
             {
@@ -24,7 +25,7 @@ namespace BookingService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateDigitalAssetResponse> Handle(AddOrUpdateDigitalAssetRequest request)
+            public async Task<AddOrUpdateDigitalAssetResponse> Handle(AddOrUpdateDigitalAssetRequest request, CancellationToken cancellationToken)
             {
                 var entity = await _context.DigitalAssets
                     .SingleOrDefaultAsync(x => x.Id == request.DigitalAsset.Id && x.IsDeleted == false);

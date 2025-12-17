@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
@@ -20,7 +21,7 @@ namespace BookingService.Features.Resources
 
         public class AddOrUpdateResourceResponse { }
 
-        public class AddOrUpdateResourceHandler : IAsyncRequestHandler<AddOrUpdateResourceRequest, AddOrUpdateResourceResponse>
+        public class AddOrUpdateResourceHandler : IRequestHandler<AddOrUpdateResourceRequest, AddOrUpdateResourceResponse>
         {
             public AddOrUpdateResourceHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Resources
                 _cache = cache;
             }
 
-            public async Task<AddOrUpdateResourceResponse> Handle(AddOrUpdateResourceRequest request)
+            public async Task<AddOrUpdateResourceResponse> Handle(AddOrUpdateResourceRequest request, CancellationToken cancellationToken)
             {
                 var entity = await _context.Resources
                     .Include(x => x.Tenant)

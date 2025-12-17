@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -20,7 +21,7 @@ namespace BookingService.Features.Resources
             public ICollection<ResourceApiModel> Resources { get; set; } = new HashSet<ResourceApiModel>();
         }
 
-        public class GetResourcesHandler : IAsyncRequestHandler<GetResourcesRequest, GetResourcesResponse>
+        public class GetResourcesHandler : IRequestHandler<GetResourcesRequest, GetResourcesResponse>
         {
             public GetResourcesHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Resources
                 _cache = cache;
             }
 
-            public async Task<GetResourcesResponse> Handle(GetResourcesRequest request)
+            public async Task<GetResourcesResponse> Handle(GetResourcesRequest request, CancellationToken cancellationToken)
             {
                 var resources = await _context.Resources
                     .Include(x => x.Tenant)

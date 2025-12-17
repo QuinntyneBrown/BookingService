@@ -1,3 +1,4 @@
+using System.Threading;
 using Amazon.S3;
 using Amazon.S3.Model;
 using BookingService.Features.DigitalAssets.UploadHandlers;
@@ -24,7 +25,7 @@ namespace BookingService.Features.DigitalAssets
             public ICollection<DigitalAssetApiModel> DigitalAssets { get; set; } = new HashSet<DigitalAssetApiModel>();
         }
 
-        public class AmazonS3UploadDigitalAssetHandler : IAsyncRequestHandler<AmazonS3UploadDigitalAssetRequest, AmazonS3UploadDigitalAssetResponse>
+        public class AmazonS3UploadDigitalAssetHandler : IRequestHandler<AmazonS3UploadDigitalAssetRequest, AmazonS3UploadDigitalAssetResponse>
         {
             public AmazonS3UploadDigitalAssetHandler(Lazy<IAmazonS3Configuration> amazonS3Configuration)
             {                             
@@ -32,7 +33,7 @@ namespace BookingService.Features.DigitalAssets
                 _client = new AmazonS3Client(_amazonS3Configuration.AccessKey, _amazonS3Configuration.SecretKey, USEast1);
             }
 
-            public async Task<AmazonS3UploadDigitalAssetResponse> Handle(AmazonS3UploadDigitalAssetRequest request)
+            public async Task<AmazonS3UploadDigitalAssetResponse> Handle(AmazonS3UploadDigitalAssetRequest request, CancellationToken cancellationToken)
             {
                 var response = new AmazonS3UploadDigitalAssetResponse();
                 foreach (var file in request.Provider.Files)

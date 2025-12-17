@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -20,7 +21,7 @@ namespace BookingService.Features.Users
             public UserApiModel User { get; set; } 
         }
 
-        public class GetUserByIdHandler : IAsyncRequestHandler<GetUserByIdRequest, GetUserByIdResponse>
+        public class GetUserByIdHandler : IRequestHandler<GetUserByIdRequest, GetUserByIdResponse>
         {
             public GetUserByIdHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Users
                 _cache = cache;
             }
 
-            public async Task<GetUserByIdResponse> Handle(GetUserByIdRequest request)
+            public async Task<GetUserByIdResponse> Handle(GetUserByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetUserByIdResponse()
                 {

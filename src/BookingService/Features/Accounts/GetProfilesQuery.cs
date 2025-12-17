@@ -1,3 +1,4 @@
+using System.Threading;
 using BookingService.Data;
 using BookingService.Features.Core;
 using MediatR;
@@ -20,7 +21,7 @@ namespace BookingService.Features.Accounts
             public ICollection<ProfileApiModel> Profiles { get; set; } = new HashSet<ProfileApiModel>();
         }
 
-        public class GetProfilesHandler : IAsyncRequestHandler<GetProfilesRequest, GetProfilesResponse>
+        public class GetProfilesHandler : IRequestHandler<GetProfilesRequest, GetProfilesResponse>
         {
             public GetProfilesHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Accounts
                 _cache = cache;
             }
 
-            public async Task<GetProfilesResponse> Handle(GetProfilesRequest request)
+            public async Task<GetProfilesResponse> Handle(GetProfilesRequest request, CancellationToken cancellationToken)
             {
                 var profiles = await _context.Profiles
                     .Include(x => x.Tenant)

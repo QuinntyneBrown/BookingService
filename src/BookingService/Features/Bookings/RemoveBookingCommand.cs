@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
@@ -20,7 +21,7 @@ namespace BookingService.Features.Bookings
 
         public class RemoveBookingResponse { }
 
-        public class RemoveBookingHandler : IAsyncRequestHandler<RemoveBookingRequest, RemoveBookingResponse>
+        public class RemoveBookingHandler : IRequestHandler<RemoveBookingRequest, RemoveBookingResponse>
         {
             public RemoveBookingHandler(BookingServiceContext context, ICache cache)
             {
@@ -28,7 +29,7 @@ namespace BookingService.Features.Bookings
                 _cache = cache;
             }
 
-            public async Task<RemoveBookingResponse> Handle(RemoveBookingRequest request)
+            public async Task<RemoveBookingResponse> Handle(RemoveBookingRequest request, CancellationToken cancellationToken)
             {
                 var booking = await _context.Bookings.SingleAsync(x=>x.Id == request.Id && x.Tenant.UniqueId == request.TenantUniqueId);
                 booking.IsDeleted = true;

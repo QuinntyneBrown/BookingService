@@ -1,3 +1,4 @@
+using System.Threading;
 using BookingService.Data;
 using BookingService.Features.Core;
 using MediatR;
@@ -15,7 +16,7 @@ namespace BookingService.Features.Notifications
 
         public class SendRegistrationConfirmationResponse { }
 
-        public class SendRegistrationConfirmationHandler : IAsyncRequestHandler<SendRegistrationConfirmationRequest, SendRegistrationConfirmationResponse>
+        public class SendRegistrationConfirmationHandler : IRequestHandler<SendRegistrationConfirmationRequest, SendRegistrationConfirmationResponse>
         {
             public SendRegistrationConfirmationHandler(BookingServiceContext context, ICache cache)
             {
@@ -23,7 +24,7 @@ namespace BookingService.Features.Notifications
                 _cache = cache;
             }
 
-            public async Task<SendRegistrationConfirmationResponse> Handle(SendRegistrationConfirmationRequest request)
+            public async Task<SendRegistrationConfirmationResponse> Handle(SendRegistrationConfirmationRequest request, CancellationToken cancellationToken)
             {
                 throw new System.NotImplementedException();
             }

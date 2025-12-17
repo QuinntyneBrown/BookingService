@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace BookingService.Features.DigitalAssets
 
         public class RemoveDigitalAssetResponse { }
 
-        public class RemoveDigitalAssetHandler : IAsyncRequestHandler<RemoveDigitalAssetRequest, RemoveDigitalAssetResponse>
+        public class RemoveDigitalAssetHandler : IRequestHandler<RemoveDigitalAssetRequest, RemoveDigitalAssetResponse>
         {
             public RemoveDigitalAssetHandler(IBookingServiceContext context, ICache cache)
             {
@@ -22,7 +23,7 @@ namespace BookingService.Features.DigitalAssets
                 _cache = cache;
             }
 
-            public async Task<RemoveDigitalAssetResponse> Handle(RemoveDigitalAssetRequest request)
+            public async Task<RemoveDigitalAssetResponse> Handle(RemoveDigitalAssetRequest request, CancellationToken cancellationToken)
             {
                 var digitalAsset = await _context.DigitalAssets.FindAsync(request.Id);
                 digitalAsset.IsDeleted = true;

@@ -1,3 +1,4 @@
+using System.Threading;
 using MediatR;
 using BookingService.Data;
 using BookingService.Features.Core;
@@ -21,7 +22,7 @@ namespace BookingService.Features.Bookings
             public BookingApiModel Booking { get; set; } 
         }
 
-        public class GetBookingByIdHandler : IAsyncRequestHandler<GetBookingByIdRequest, GetBookingByIdResponse>
+        public class GetBookingByIdHandler : IRequestHandler<GetBookingByIdRequest, GetBookingByIdResponse>
         {
             public GetBookingByIdHandler(BookingServiceContext context, ICache cache)
             {
@@ -29,7 +30,7 @@ namespace BookingService.Features.Bookings
                 _cache = cache;
             }
 
-            public async Task<GetBookingByIdResponse> Handle(GetBookingByIdRequest request)
+            public async Task<GetBookingByIdResponse> Handle(GetBookingByIdRequest request, CancellationToken cancellationToken)
             {                
                 return new GetBookingByIdResponse()
                 {
