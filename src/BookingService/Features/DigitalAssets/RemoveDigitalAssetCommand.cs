@@ -1,7 +1,7 @@
 using MediatR;
 using BookingService.Data;
 using System.Threading.Tasks;
-using BookingService.Features.Core;
+using BookingService.Core;
 
 namespace BookingService.Features.DigitalAssets
 {

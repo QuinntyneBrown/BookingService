@@ -1,5 +1,5 @@
 ﻿using BookingService.Data;
-using BookingService.Features.Core;
+using BookingService.Core;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;

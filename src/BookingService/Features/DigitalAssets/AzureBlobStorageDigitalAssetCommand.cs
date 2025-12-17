@@ -3,7 +3,7 @@ using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Auth;
 using BookingService.Data;
-using BookingService.Features.Core;
+using BookingService.Core;
 using BookingService.Features.DigitalAssets.UploadHandlers;
 using System;
 using System.Collections.Generic;

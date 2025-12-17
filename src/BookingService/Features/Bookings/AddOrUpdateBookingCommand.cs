@@ -1,7 +1,7 @@
 using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
-using BookingService.Features.Core;
+using BookingService.Core;
 using System;
 using System.Threading.Tasks;
 using System.Data.Entity;

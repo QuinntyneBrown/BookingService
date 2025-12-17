@@ -6,7 +6,7 @@ using System.Linq;
 using System.Data.Entity;
 using BookingService.Data.Model;
 using static BookingService.Features.DigitalAssets.Constants;
-using BookingService.Features.Core;
+using BookingService.Core;
 
 namespace BookingService.Features.DigitalAssets
 {

@@ -4,7 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
-using BookingService.Features.Core;
+using BookingService.Core;
 using static BookingService.Features.Accounts.AddOrUpdateAccountCommand;
 using static BookingService.Features.Accounts.GetAccountsQuery;
 using static BookingService.Features.Accounts.GetAccountByIdQuery;

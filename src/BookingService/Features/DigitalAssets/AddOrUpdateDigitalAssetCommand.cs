@@ -3,7 +3,7 @@ using BookingService.Data;
 using BookingService.Data.Model;
 using System.Threading.Tasks;
 using System.Data.Entity;
-using BookingService.Features.Core;
+using BookingService.Core;
 
 namespace BookingService.Features.DigitalAssets
 {
