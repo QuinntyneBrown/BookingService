@@ -2,7 +2,7 @@ using MediatR;
 using BookingService.Data;
 using BookingService.Data.Model;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using BookingService.Features.Core;
 
 namespace BookingService.Features.DigitalAssets

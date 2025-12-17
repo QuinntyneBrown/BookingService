@@ -1,5 +1,5 @@
 ﻿using BookingService.Data;
-using Microsoft.Practices.Unity;
+using Unity;
 using System;
 using System.Net.Http;
 using System.ServiceModel.Channels;

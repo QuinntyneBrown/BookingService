@@ -2,8 +2,8 @@ using MediatR;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using BookingService.Features.Core;
 using static BookingService.Features.Bookings.AddOrUpdateBookingCommand;
 using static BookingService.Features.Bookings.GetBookingsQuery;
@@ -14,7 +14,7 @@ namespace BookingService.Features.Bookings
 {
     [Authorize]
     [RoutePrefix("api/booking")]
-    public class BookingController : ApiController
+    public class BookingController : ControllerBase
     {
         public BookingController(IMediator mediator)
         {
@@ -53,7 +53,7 @@ namespace BookingService.Features.Bookings
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(GetBookingByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetBookingByIdRequest request)
+        public async Task<IHttpActionResult> GetById([FromQuery]GetBookingByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -62,7 +62,7 @@ namespace BookingService.Features.Bookings
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(RemoveBookingResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveBookingRequest request)
+        public async Task<IHttpActionResult> Remove([FromQuery]RemoveBookingRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

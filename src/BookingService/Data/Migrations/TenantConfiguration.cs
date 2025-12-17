@@ -1,4 +1,4 @@
-using System.Data.Entity.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 using BookingService.Data;
 using BookingService.Data.Model;
 using System;

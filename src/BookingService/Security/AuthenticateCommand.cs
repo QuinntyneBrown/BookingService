@@ -1,7 +1,7 @@
 using BookingService.Security;
 using System;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using BookingService.Data.Model;
 using System.Collections.Generic;
 using System.Security.Claims;

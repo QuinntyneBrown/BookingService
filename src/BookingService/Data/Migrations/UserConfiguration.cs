@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
+using Microsoft.EntityFrameworkCore.Migrations;
 using System.Linq;
 using BookingService.Data;
 using BookingService.Data.Model;

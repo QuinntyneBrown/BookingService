@@ -2,7 +2,7 @@
 using BookingService.Data;
 using BookingService.Features.Core;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Users
 {

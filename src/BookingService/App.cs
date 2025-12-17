@@ -4,7 +4,7 @@ using MediatR;
 using Microsoft.AspNet.SignalR.Infrastructure;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Security.OAuth;
-using Microsoft.Practices.Unity;
+using Unity;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using Owin;

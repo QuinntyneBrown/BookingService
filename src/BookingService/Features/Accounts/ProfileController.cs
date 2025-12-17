@@ -3,7 +3,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Authorization;
 using BookingService.Features.Core;
 using static BookingService.Features.Accounts.AddOrUpdateProfileCommand;
 using static BookingService.Features.Accounts.GetProfilesQuery;
@@ -13,8 +13,8 @@ using static BookingService.Features.Accounts.RemoveProfileCommand;
 namespace BookingService.Features.Accounts
 {
     [Authorize]
-    [RoutePrefix("api/profile")]
-    public class ProfileController : ApiController
+    [Route("api/profile")]
+    public class ProfileController : ControllerBase
     {
         public ProfileController(IMediator mediator)
         {
@@ -24,7 +24,7 @@ namespace BookingService.Features.Accounts
         [Route("add")]
         [HttpPost]
         [ResponseType(typeof(AddOrUpdateProfileResponse))]
-        public async Task<IHttpActionResult> Add(AddOrUpdateProfileRequest request)
+        public async Task<IActionResult> Add(AddOrUpdateProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -33,7 +33,7 @@ namespace BookingService.Features.Accounts
         [Route("update")]
         [HttpPut]
         [ResponseType(typeof(AddOrUpdateProfileResponse))]
-        public async Task<IHttpActionResult> Update(AddOrUpdateProfileRequest request)
+        public async Task<IActionResult> Update(AddOrUpdateProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -43,7 +43,7 @@ namespace BookingService.Features.Accounts
         [AllowAnonymous]
         [HttpGet]
         [ResponseType(typeof(GetProfilesResponse))]
-        public async Task<IHttpActionResult> Get()
+        public async Task<IActionResult> Get()
         {
             var request = new GetProfilesRequest();
             request.TenantUniqueId = Request.GetTenantUniqueId();
@@ -53,7 +53,7 @@ namespace BookingService.Features.Accounts
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(GetProfileByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetProfileByIdRequest request)
+        public async Task<IActionResult> GetById([FromQuery]GetProfileByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -62,7 +62,7 @@ namespace BookingService.Features.Accounts
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(RemoveProfileResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveProfileRequest request)
+        public async Task<IActionResult> Remove([FromQuery]RemoveProfileRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));

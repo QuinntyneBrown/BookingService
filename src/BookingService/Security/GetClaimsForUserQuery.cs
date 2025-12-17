@@ -3,7 +3,7 @@ using BookingService.Data;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace BookingService.Security

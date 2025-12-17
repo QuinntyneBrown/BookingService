@@ -4,7 +4,7 @@ using BookingService.Data.Model;
 using BookingService.Features.Core;
 using System;
 using System.Threading.Tasks;
-using System.Data.Entity;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingService.Features.Bookings
 {

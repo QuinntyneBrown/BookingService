@@ -38,6 +38,9 @@
     <!-- JSON -->
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     
+    <!-- Caching -->
+    <PackageReference Include="System.Runtime.Caching" Version="9.0.0" />
+    
     <!-- Swagger/OpenAPI -->
     <PackageReference Include="Swashbuckle.AspNetCore" Version="7.2.0" />
     

@@ -2,8 +2,8 @@ using MediatR;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web.Http;
-using System.Web.Http.Description;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using BookingService.Features.Core;
 using static BookingService.Features.Accounts.AddOrUpdateAccountCommand;
 using static BookingService.Features.Accounts.GetAccountsQuery;
@@ -13,8 +13,8 @@ using static BookingService.Features.Accounts.RemoveAccountCommand;
 namespace BookingService.Features.Accounts
 {
     [Authorize]
-    [RoutePrefix("api/account")]
-    public class AccountController : ApiController
+    [Route("api/account")]
+    public class AccountController : ControllerBase
     {
         public AccountController(IMediator mediator)
         {
@@ -53,7 +53,7 @@ namespace BookingService.Features.Accounts
         [Route("getById")]
         [HttpGet]
         [ResponseType(typeof(GetAccountByIdResponse))]
-        public async Task<IHttpActionResult> GetById([FromUri]GetAccountByIdRequest request)
+        public async Task<IHttpActionResult> GetById([FromQuery]GetAccountByIdRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
@@ -62,7 +62,7 @@ namespace BookingService.Features.Accounts
         [Route("remove")]
         [HttpDelete]
         [ResponseType(typeof(RemoveAccountResponse))]
-        public async Task<IHttpActionResult> Remove([FromUri]RemoveAccountRequest request)
+        public async Task<IHttpActionResult> Remove([FromQuery]RemoveAccountRequest request)
         {
             request.TenantUniqueId = Request.GetTenantUniqueId();
             return Ok(await _mediator.Send(request));
